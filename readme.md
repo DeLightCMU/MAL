@@ -1,4 +1,4 @@
-## Installation
+## 1. Installation
 
 ### Requirements:
 - Python3
@@ -49,7 +49,7 @@ MACOSX_DEPLOYMENT_TARGET=10.9 CC=clang CXX=clang++ python setup.py build develop
 ```
 
 
-## Running
+## 2. Running
 
 For that, all you need to do is to modify `maskrcnn_benchmark/config/paths_catalog.py` to point to the location where your dataset is stored.
 
@@ -84,3 +84,6 @@ python -m torch.distributed.launch --nproc_per_node=$NGPUS tools/test_net.py --c
 cd path_to_free_anchor
 python -m torch.distributed.launch --nproc_per_node=$NGPUS tools/multi_scale_test.py --config-file "path/to/config/file.yaml" MODEL.WEIGHT "path/to/.pth file" DATASETS.TEST "('coco_test-dev',)"
 ```
+
+
+### 3. Model
