@@ -1,6 +1,6 @@
 MODEL:
   META_ARCHITECTURE: "RetinaNet"
-  WEIGHT: "catalog://ImageNetPretrained/MSRA/R-101"
+  WEIGHT: "catalog://ImageNetPretrained/FBResNeXt/X-101-64x4d"
   RPN_ONLY: True
   BACKBONE:
     CONV_BODY: "R-101-FPN"
