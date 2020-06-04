@@ -82,6 +82,7 @@ class ModelCatalog(object):
         "MSRA/R-50-GN": "ImageNetPretrained/47261647/R-50-GN.pkl",
         "MSRA/R-101": "ImageNetPretrained/MSRA/R-101.pkl",
         "MSRA/R-101-GN": "ImageNetPretrained/47592356/R-101-GN.pkl",
+        "FBResNeXt/X-101-64x4d": "ImageNetPretrained/FBResNeXt/X-101-64x4d.pkl",
         "FAIR/20171220/X-101-32x8d": "ImageNetPretrained/20171220/X-101-32x8d.pkl",
     }
 
