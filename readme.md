@@ -102,4 +102,13 @@ python -m torch.distributed.launch --nproc_per_node=$NGPUS tools/multi_scale_tes
 ```
 
 
-### 3. Model
+### Citation: 
+
+```bash
+@inproceedings{kehuang2020,
+  title={Multiple Anchor Learning for Visual Object Detection},
+  author={Wei Ke, Tianliang Zhang, Zeyi Huang, Qixiang Ye, Jianzhuang Liu and Dong Huang},
+  booktitle={CVPR},
+  year={2020}
+}
+```
