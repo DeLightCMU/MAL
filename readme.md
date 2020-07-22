@@ -63,14 +63,14 @@ MACOSX_DEPLOYMENT_TARGET=10.9 CC=clang CXX=clang++ python setup.py build develop
 
 For that, all you need to do is to modify `maskrcnn_benchmark/config/paths_catalog.py` to point to the location where your dataset is stored.
 
-#### Config Files
+#### Config Files and Pre-trained COCO models
 We provide four configuration files in the configs directory.
 
-| Config File              | Backbone                | Iteration |
-| :----------------------: | :---------------------: | :-------: |
-| configs/mal_R-50-FPN     | ResNet-50-FPN           | 135k      |
-| configs/mal_R-101-FPN    | ResNet-101-FPN          | 180k       |
-| configs/mal_X-101-FPN    | ResNext-101-FPN         | 180k      |
+| Config File              | Backbone                | Iteration | COCO pth models |
+| :----------------------: | :---------------------: | :-------: | :------------:  |
+| configs/mal_R-50-FPN     | ResNet-50-FPN           | 135k      |  download   |
+| configs/mal_R-101-FPN    | ResNet-101-FPN          | 180k      |  download   |
+| configs/mal_X-101-FPN    | ResNext-101-FPN         | 180k      |  download   |
 
 
 #### Training with 8 GPUs
@@ -80,6 +80,12 @@ cd path_to_mal
 export NGPUS=8
 python -m torch.distributed.launch --nproc_per_node=$NGPUS tools/train_net.py --config-file "path/to/config/file.yaml"
 ```
+#### Fine-tuning MAL from COCO models
+
+```bash
+TODO
+```
+
 
 #### Test on COCO test-dev
 
