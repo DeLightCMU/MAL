@@ -2,6 +2,11 @@
 
 This is the official implementation of CVPR2020 paper: Wei Ke, Tianliang Zhang, Zeyi Huang, Qixiang Ye, Jianzhuang Liu, Dong Huang, Multiple Anchor Learning for Visual Object Detection. [PDF](https://openaccess.thecvf.com/content_CVPR_2020/papers/Ke_Multiple_Anchor_Learning_for_Visual_Object_Detection_CVPR_2020_paper.pdf) 
 
+This repo include with basic training and inference. 
+
+For fast inference, please direct to [MAL-inference]( https://github.com/DeLightCMU/MAL-inference)
+
+
 ## 1. Installation
 
 ### Requirements:
