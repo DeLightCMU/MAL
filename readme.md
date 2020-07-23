@@ -73,21 +73,21 @@ We provide the following MAL models pre-trained on COCO2017.
 | configs/mal_X-101-FPN    | ResNext-101-FPN         | [download](https://cmu.box.com/s/5bgax4gqsyvv31w5uhwrywmvvikathnn)   |
 
 
-#### Training with 8 GPUs
+#### Training from scratch with 8 GPUs
 
 ```bash
 cd path_to_mal
 export NGPUS=8
 python -m torch.distributed.launch --nproc_per_node=$NGPUS tools/train_net.py --config-file "path/to/config/file.yaml"
 ```
-#### Fine-tuning MAL from COCO models
+#### Fine-tuning from COCO models
 
 ```bash
 TODO
 ```
 
 
-#### Test on COCO test-dev
+#### Testing on COCO test-dev
 
 ```bash
 cd path_to_free_anchor
