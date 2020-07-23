@@ -68,7 +68,7 @@ We provide four configuration files in the configs directory.
 
 | Config File              | Backbone                | Iteration | COCO pth models |
 | :----------------------: | :---------------------: | :-------: | :------------:  |
-| configs/mal_R-50-FPN     | ResNet-50-FPN           | 135k      |  download   |
+| configs/mal_R-50-FPN     | ResNet-50-FPN           | 135k      |  [download](https://cmu.box.com/s/f70ewy7fh66bsb551v44hfskehgz07z3)   |
 | configs/mal_R-101-FPN    | ResNet-101-FPN          | 180k      |  download   |
 | configs/mal_X-101-FPN    | ResNext-101-FPN         | 180k      |  download   |
 
