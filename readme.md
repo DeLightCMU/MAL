@@ -63,7 +63,7 @@ MACOSX_DEPLOYMENT_TARGET=10.9 CC=clang CXX=clang++ python setup.py build develop
 
 For that, all you need to do is to modify `maskrcnn_benchmark/config/paths_catalog.py` to point to the location where your dataset is stored.
 
-#### Config Files and Pre-trained COCO models
+#### Pre-trained COCO models
 We provide the following MAL models pre-trained on COCO2017. 
 
 | Config File              | Backbone                | COCO pth models |
