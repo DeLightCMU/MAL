@@ -1,85 +1,97 @@
-## FreeAnchor
+# Multiple Anchor Learning (MAL)
 
-The Code for "FreeAnchor: Learning to Match Anchors for Visual Object Detection". \[[https://arxiv.org/abs/1909.02466](https://arxiv.org/abs/1909.02466)\]
+This is the official implementation of the paper: 
+- Wei Ke, Tianliang Zhang, Zeyi Huang, Qixiang Ye, Jianzhuang Liu, Dong Huang, Multiple Anchor Learning for Visual Object Detection. [PDF](https://openaccess.thecvf.com/content_CVPR_2020/papers/Ke_Multiple_Anchor_Learning_for_Visual_Object_Detection_CVPR_2020_paper.pdf), CVPR, 2020. 
 
-![architecture](architecture.png)
+### Citation: 
 
-Detection performance on COCO:
+```bash
+@inproceedings{kehuang2020,
+  title={Multiple Anchor Learning for Visual Object Detection},
+  author={Wei Ke and Tianliang Zhang and Zeyi Huang and Qixiang Ye and Jianzhuang Liu and Dong Huang},
+  booktitle={CVPR},
+  year={2020}
+}
+```
 
-| Hardware | Backbone | Iteration | Scale jittering<br>train / test | AP<br>(minival) | AP<br>(test-dev) | model link |
-| :--------: | :--------------------: | :---: | :-------: | :--: | :--: | :------------------------: |
-| 4  x  V100 | ResNet-50-FPN          |   90k |   N / N   | 38.6 | 39.1 | [Google Drive](https://drive.google.com/file/d/1EH-NlADMrnf-VT3gCQNyN7DMJOgPDxXD/view?usp=sharing)                       <br>[Baidu Drive](https://pan.baidu.com/s/1ST2nv4s48voofWqwUUwHhw#/)                                                                        |
-| 4  x  V100 | ResNet-101-FPN         |   90k |   N / N   | 41.0 | 41.3 | [Google Drive](https://drive.google.com/file/d/1ykjXoLk-tnY7hOu6VlQsJ57AOBO42LPT/view?usp=sharing)                  <br>[Baidu Drive](https://pan.baidu.com/s/1Lfg1Wt0Et60QSP1pU3iLRQ#/)                                                                        |
-| 4  x  V100 | ResNet-101-FPN         |  135k |   N / N   | 41.3 | 41.8 | [Google Drive](https://drive.google.com/file/d/1RtBMzjhrOegCmhUSpI-ndbjjJrrsihB2/view?usp=sharing)                  <br>[Baidu Drive](https://pan.baidu.com/s/1ekr8thnlPmPqxGVjGaUQZg#/)                                                                        |
-| 4  x  V100 | ResNeXt-101-32x8d-FPN  |  135k |   Y / N   | 44.2 | 44.8 | [Google Drive](https://drive.google.com/file/d/1RFQuA-6_h4Cb8Np8cjvBEbKlqcH7w5mk/view?usp=sharing)                          <br>[Baidu Drive](https://pan.baidu.com/s/14UpeLSL8SNVZZUnsVKMnDQ#/)                                                                        |
+This repo includes the basic training and inference pipeline based on [maskrcnn_benckmark](https://github.com/facebookresearch/maskrcnn-benchmark) . 
 
-| Hardware | Backbone | Iteration | Scale jittering<br>train / test | AP<br>(minival) | AP<br>(test-dev) | model link |
-| :--------: | :--------------------: | :---: | :-------: | :--: | :--: | :------------------------: |
-| 8 x 2080Ti | ResNet-50-FPN          |   90k |   N / N   | 38.4 | 38.9 | [Google Drive](https://drive.google.com/file/d/1YZ63xD4f-8d4Ozcz1H8rCTePIK2fXeea/view?usp=sharing)                  <br>[Baidu Drive](https://pan.baidu.com/s/1p2hnZPPJvtHCgntUZe2SvA#/)                                                                        |
-| 8 x 2080Ti | ResNet-101-FPN         |   90k |   N / N   | 40.4 | 41.1 | [Google Drive](https://drive.google.com/file/d/1zeGRYhMAgSVWC9ARGvXdVF0U5KSE8WMQ/view?usp=sharing)                  <br>[Baidu Drive](https://pan.baidu.com/s/1Tz5-flBPLenV9T9vkQIhBg#/)                                                                                |
-| 8 x 2080Ti | ResNet-101-FPN         |  135k |   N / N   | 41.1 | 41.5 | [Google Drive](https://drive.google.com/file/d/1al9itwiPXX8lVU1uFvzXL7BnBw9hBDnI/view?usp=sharing)                  <br>[Baidu Drive](https://pan.baidu.com/s/1efjzVT0y1HDUAUEaaZ8YLg#/)                                                                        |
-| 8 x 2080Ti | ResNeXt-101-32x8d-FPN  |  135k |   Y / N   | 44.2 | 44.9 | [Google Drive](https://drive.google.com/file/d/1vZuV4uSDR6t1Va_8E-iS9Ht7PutC_JDd/view?usp=sharing)                  <br>[Baidu Drive](https://pan.baidu.com/s/18NHsQb-ZBRS4Xcfxfmsuyw#/)                                                                                   |
-
-| Hardware | Backbone | Iteration | Scale jittering<br>train / test | AP<br>(minival) | AP<br>(test-dev) | model link |
-| :--------: | :--------------------: | :---: | :-------: | :--: | :--: | :------------------------: |
-| 8 x 2080Ti | ResNet-101-FPN         |  180k |   Y / N   | 42.7 | 43.1 | [Google Drive](https://drive.google.com/file/d/1XxOGpE5-OX5mW5fee1jxXxFhO4vmo3fk/view?usp=sharing)                  <br>[Baidu Drive](https://pan.baidu.com/s/1SGmGwu7TnfR9oyVJVxxC2g#/)                                                                                   |
+For fast inference, please direct to [MAL-inference]( https://github.com/DeLightCMU/MAL-inference)
 
 
-## Installation 
-Check [INSTALL.md](INSTALL.md) for installation instructions.
+## 1. Installation
 
-## Usage
-You will need to download the COCO dataset and configure your own paths to the datasets.
+### Requirements:
+- Python3
+- PyTorch 1.1 with CUDA support
+- torchvision 0.2.1
+- pycocotools
+- yacs
+- matplotlib
+- GCC >= 4.9
+- (optional) OpenCV for the webcam demo
+
+
+### Step-by-step installation
+
+```bash
+# first, make sure that your conda is setup properly with the right environment
+# for that, check that `which conda`, `which pip` and `which python` points to the
+# right path. From a clean conda env, this is what you need to do
+
+conda create --name free_anchor python=3.7
+conda activate free_anchor
+
+# this installs the right pip and dependencies for the fresh python
+conda install ipython
+
+# maskrnn_benchmark and coco api dependencies
+pip install ninja yacs cython matplotlib tqdm
+
+# pytorch and torchvision
+# we give the instructions for CUDA 10.0
+conda install pytorch=1.1 torchvision=0.2.1 cudatoolkit=10.0 -c pytorch
+
+# install pycocotools
+pip install pycocotools
+
+# install FreeAnchor
+git clone https://github.com/DeLightCMU/MAL.git
+git checkout finetune
+
+# the following will install the lib with
+# symbolic links, so that you can modify
+# the files if you want and won't need to
+# re-build it
+cd MAL
+bash build_maskrcnn.sh
+```
+
+## 2. Running
 
 For that, all you need to do is to modify `maskrcnn_benchmark/config/paths_catalog.py` to point to the location where your dataset is stored.
 
-#### Config Files
-We provide four configuration files in the configs directory.
+#### Pre-trained COCO models
+We provide the following MAL models pre-trained on COCO2017. 
 
-| Backbone | Iteration | Scale jittering<br>train / test | Config File |  
-| :-----: | :---: | :---: | :----------: |
-| ResNet-50-FPN    |   90k |   N / N  | configs/free_anchor_R-50-FPN_1x.yaml      | 
-| ResNet-101-FPN   |   90k |   N / N  | configs/free_anchor_R-101-FPN_1x.yaml     | 
-| ResNet-101-FPN   |  135k |   N / N  | configs/free_anchor_R-101-FPN_1.5x.yaml   | 
-| ResNeXt-101-32x8d-FPN  |  135k |   Y / N  | configs/free_anchor_X-101-FPN_j1.5x.yaml  | 
+| Config File              | Backbone                | COCO pth models |
+| :----------------------: | :---------------------: | :------------:  |
+| configs/mal_R-50-FPN     | ResNet-50-FPN           | [download](https://cmu.box.com/s/f70ewy7fh66bsb551v44hfskehgz07z3)   |
+| configs/mal_R-101-FPN    | ResNet-101-FPN          | download   |
+| configs/mal_X-101-FPN    | ResNext-101-FPN         | [download](https://cmu.box.com/s/5bgax4gqsyvv31w5uhwrywmvvikathnn)   |
 
 
-#### Training with 4 GPUs (4 images per GPU)
-
-```bash
-cd path_to_free_anchor
-export NGPUS=4
-python -m torch.distributed.launch --nproc_per_node=$NGPUS tools/train_net.py --config-file "path/to/config/file.yaml"
-```
-
-#### Training with 8 GPUs (2 images per GPU)
+#### Fine-tuning from COCO models
 
 ```bash
-cd path_to_free_anchor
-export NGPUS=8
-python -m torch.distributed.launch --nproc_per_node=$NGPUS tools/train_net.py --config-file "path/to/config/file.yaml"
+cd MAL
+CUDA_VISIBLE_DEVICES=1,2,3,4 python -m torch.distributed.launch --nproc_per_node=4 tools/train_net.py --config-file ./configs/MAL_R-50-FPN_e2e.yaml SOLVER.IMS_PER_BATCH 4 MODEL.WEIGHT path_to_pretrained_model
 ```
 
-#### Test on MS-COCO test-dev
 
-```bash
-cd path_to_free_anchor
-python -m torch.distributed.launch --nproc_per_node=$NGPUS tools/test_net.py --config-file "path/to/config/file.yaml" MODEL.WEIGHT "path/to/.pth file" DATASETS.TEST "('coco_test-dev',)"
-```
-
-#### Evaluate NMS Recall
+#### Generating COCO format labels
 
 ```bash
-cd path_to_free_anchor
-python  -m torch.distributed.launch --nproc_per_node=$NGPUS tools/eval_NR.py --config-file "path/to/config/file.yaml" MODEL.WEIGHT "path/to/.pth file"
-```
-## Citations
-Please consider citing our paper in your publications if the project helps your research.
-```
-@inproceedings{zhang2019freeanchor,
-  title   =  {{FreeAnchor}: Learning to Match Anchors for Visual Object Detection},
-  author  =  {Zhang, Xiaosong and Wan, Fang and Liu, Chang and Ji, Rongrong and Ye, Qixiang},
-  booktitle =  {Neural Information Processing Systems},
-  year    =  {2019}
-}
+cd MAL/tools
+python transfer_to_coco_json_aidtr.py
 ```
