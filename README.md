@@ -57,6 +57,7 @@ pip install pycocotools
 
 # install FreeAnchor
 git clone https://github.com/DeLightCMU/MAL.git
+git checkout finetune
 
 # the following will install the lib with
 # symbolic links, so that you can modify
