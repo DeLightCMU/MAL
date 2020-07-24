@@ -19,9 +19,17 @@ class BoxList(object):
     def __init__(self, bbox, image_size, mode="xyxy"):
         device = bbox.device if isinstance(bbox, torch.Tensor) else torch.device("cpu")
         bbox = torch.as_tensor(bbox, dtype=torch.float32, device=device)
+        # print('bbox.size(): ', bbox.size())
+        # if bbox.size(0) > 100000:
+        #     print('bbox: ', bbox)
         if bbox.ndimension() != 2:
             raise ValueError(
                 "bbox should have 2 dimensions, got {}".format(bbox.ndimension())
+            )
+        if bbox.size(0) == 0:
+            raise ValueError(
+                "number of bbox should be "
+                "size larger than 0, got {}".format(bbox.size(0))
             )
         if bbox.size(-1) != 4:
             raise ValueError(

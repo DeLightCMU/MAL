@@ -23,6 +23,10 @@ def build_transforms(cfg, is_train=True):
         [
             resize,
             T.RandomHorizontalFlip(flip_prob),
+            #T.RandomSaturation(),
+            #T.RandomHue(),
+            #T.RandomContrast(),
+            #T.RandomBrightness(),
             T.ToTensor(),
             normalize_transform,
         ]

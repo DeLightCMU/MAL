@@ -145,6 +145,8 @@ class RetinaNetModule(torch.nn.Module):
             losses (dict[Tensor]): the losses for the model during training. During
                 testing, it is an empty dict.
         """
+        # print('type(targets): ', type(targets))
+
         pre_time = time.time()
         box_cls, box_regression = self.head(features)
         # print('retinanet head takes {}'.format(time.time()-pre_time))

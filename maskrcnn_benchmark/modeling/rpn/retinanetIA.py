@@ -172,6 +172,10 @@ class RetinaNetModule(torch.nn.Module):
                 return self._forward_test(anchors, box_cls, box_regression)
 
     def _forward_train(self, anchors, box_cls, box_regression, targets):
+        # print('loss 1: ', type(anchors), len(anchors))
+        # print('loss 2: ', type(box_cls), len(box_cls))
+        # print('loss 3: ', type(box_regression), len(box_regression))
+        # print('loss 4: ', type(targets), len(targets))
         if self.cfg.FREEANCHOR.FREEANCHOR_ON:
             losses, pred_info = self.loss_evaluator(
                 anchors, box_cls, box_regression, targets

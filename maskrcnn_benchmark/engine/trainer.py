@@ -54,6 +54,9 @@ def do_train(
     start_training_time = time.time()
     end = time.time()
     for iteration, (images, targets, _) in enumerate(data_loader, start_iter):
+        # print('images: ', images)
+        # print('targets: ', targets, targets[0].bbox)
+        # print('targets: ', type(targets[0]), type(targets))
         data_time = time.time() - end
         arguments["iteration"] = iteration
 
@@ -62,7 +65,10 @@ def do_train(
         images = images.to(device)
         targets = [target.to(device) for target in targets]
 
+        # print('images.size(): ', images.tensors.size(), images.image_sizes)
+        # print('targets: ', targets)
         loss_dict = model(images=images, iteration=iteration+1, targets=targets)
+        # print('loss_dict: ', loss_dict)
 
         losses = sum(loss for loss in loss_dict.values())
 

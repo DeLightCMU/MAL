@@ -74,7 +74,34 @@ def load_state_dict(model, loaded_state_dict):
     # DataParallel or DistributedDataParallel during serialization,
     # remove the "module" prefix before performing the matching
     loaded_state_dict = strip_prefix_if_present(loaded_state_dict, prefix="module.")
-    align_and_update_state_dicts(model_state_dict, loaded_state_dict)
+
+    # Debug
+    # loaded_state_dict = {k: v for k, v in loaded_state_dict.items() if k in model_state_dict}
+    # loaded_state_dict = {k: v for k, v in loaded_state_dict.items()}
+
+    tmp_model_state_dict = strip_prefix_if_present(model_state_dict, prefix="module.")
+    tmp_loaded_state_dict = {}
+    dict_taboo_table = ['rpn.head.cls_logits.weight', 'rpn.head.cls_logits.bias', 'rpn.head.bbox_pred.weight', 'rpn.head.bbox_pred.bias']
+    for key, value in loaded_state_dict.items():
+        if key in dict_taboo_table:
+            continue
+
+        if key in tmp_model_state_dict.keys():
+            tmp_loaded_state_dict['module.' + key] = value
+            #tmp_loaded_state_dict[key] = value
+        else:
+            print('Hello: Missing key(s) in state_dict :{}'.format(key))
+
+    # exit(0)
+    # Debug
+
+    # align_and_update_state_dicts(model_state_dict, loaded_state_dict)
+    # align_and_update_state_dicts(model_state_dict, tmp_loaded_state_dict)
+    model_state_dict.update(tmp_loaded_state_dict)
+    # for key, value in model_state_dict.items():
+    #     print(key)
+    # exit(0)
 
     # use strict loading
+    # model.load_state_dict(model_state_dict)
     model.load_state_dict(model_state_dict)

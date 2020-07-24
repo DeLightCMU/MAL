@@ -100,9 +100,20 @@ class RetinaNet(nn.Module):
         if self.cfg.RETINANET.BACKBONE == "p2p7":
             rpn_features = features[1:]
         if self.cfg.FREEANCHOR.IA_ON and self.training:
+            # print('images.size(): ', images.size(), targets)
             (anchors, detections), detector_losses = self.rpn(images, rpn_features, mask, targets=targets)
         else:
             (anchors, detections), detector_losses = self.rpn(images, rpn_features, targets=targets)
+        # print('anchors: ', anchors)
+        # print('detections: ', detections)
+        # print('detector_losses: ', detector_losses)
+        # print('size 1: ', images.size())
+        # print('size 2: ', len(rpn_features))
+        # for idx in range(len(rpn_features)):
+        #     print('size 2: ', rpn_features[idx].size())
+        # print('size 3: ', len(targets))
+        # print('size 3: ', targets[0])
+
         if self.training:
             losses = {}
             losses.update(detector_losses)
@@ -124,8 +135,14 @@ class RetinaNet(nn.Module):
                         else:
                             proposals.append(cat_boxlist(merge_list))
                     x, result, mask_losses = self.mask(features, proposals, targets)
+                    # print('x: ', x)
+                    # print('result: ', result)
+                    # print('mask_losses: ', mask_losses)
                 elif self.cfg.MODEL.SPARSE_MASK_ON:
                     x, result, mask_losses = self.mask(features, anchors, targets)
+                    # print('x: ', x)
+                    # print('result: ', result)
+                    # print('mask_losses: ', mask_losses)
 
                 losses.update(mask_losses)
             return losses

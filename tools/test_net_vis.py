@@ -26,6 +26,7 @@ def main():
         metavar="FILE",
         help="path to config file",
     )
+    print('debug 1')
     parser.add_argument("--local_rank", type=int, default=0)
     parser.add_argument(
         "opts",
@@ -40,6 +41,7 @@ def main():
     distributed = num_gpus > 1
 
     if distributed:
+        print('debug 2')
         torch.cuda.set_device(args.local_rank)
         torch.distributed.deprecated.init_process_group(
             backend="nccl", init_method="env://"

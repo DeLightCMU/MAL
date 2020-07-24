@@ -61,6 +61,26 @@ class Checkpointer(object):
         checkpoint = self._load_file(f)
         if not self.has_checkpoint():
             checkpoint = {"model": checkpoint["model"]}
+
+        # remove the classification head weights
+        # for k, v in checkpoint['model'].items():
+        #     print(k, v.size())
+        # print('checkpoint', checkpoint)
+        # new_checkpoint = checkpoint
+        # def removekey(d, listofkeys):
+        #     r = d
+        #     for key in listofkeys:
+        #         del r[key]
+        #     return r
+        #
+        # new_checkpoint['model'] = removekey(checkpoint['model'],
+        #                                     [
+        #                                         'module.rpn.head.cls_logits.weight',
+        #                                         'module.rpn.head.cls_logits.bias'
+        #                                      ])
+        # checkpoint = new_checkpoint
+        # remove the classification head weights
+
         self._load_model(checkpoint)
         if "optimizer" in checkpoint and self.optimizer:
             self.logger.info("Loading optimizer from {}".format(f))

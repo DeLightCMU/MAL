@@ -41,6 +41,7 @@ class BoxCoder(object):
         gt_ctr_y = reference_boxes[..., 1] + 0.5 * gt_heights
 
         wx, wy, ww, wh = self.weights
+        # print('debug: ', wx, wy, gt_ctr_x.size(), ex_ctr_x.size(), ex_widths.size())
         targets_dx = wx * (gt_ctr_x - ex_ctr_x) / ex_widths
         targets_dy = wy * (gt_ctr_y - ex_ctr_y) / ex_heights
         targets_dw = ww * torch.log(gt_widths / ex_widths)

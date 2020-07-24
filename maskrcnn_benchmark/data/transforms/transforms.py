@@ -5,6 +5,8 @@ import torch
 import torchvision
 from torchvision.transforms import functional as F
 
+import numpy as np
+from PIL import Image
 
 class Compose(object):
     def __init__(self, transforms):
@@ -78,6 +80,7 @@ class RandomHorizontalFlip(object):
 
     def __call__(self, image, target):
         if random.random() < self.prob:
+            #print(image.shape,'!!!!!!!!!!!!!!')
             image = F.hflip(image)
             target = target.transpose(0)
         return image, target
@@ -87,6 +90,68 @@ class ToTensor(object):
     def __call__(self, image, target):
         return F.to_tensor(image), target
 
+class RandomSaturation(object):
+    def __init__(self, lower=0.5, upper=1.5):
+        self.lower = lower
+        self.upper = upper
+        assert self.upper >= self.lower, "contrast upper must be >= lower."
+        assert self.lower >= 0, "contrast lower must be non-negative."
+
+    def __call__(self, image, target=None):
+        if np.random.randint(2):
+            image = np.array(image,dtype='float64')
+            #print(image.shape)
+            image[:, :, 1] *= np.random.uniform(self.lower, self.upper)
+            image = np.uint8(image)
+            image = Image.fromarray(image)
+        return image, target
+
+class RandomHue(object):
+    def __init__(self, delta=18.0):
+        assert delta >= 0.0 and delta <= 360.0
+        self.delta = delta
+
+    def __call__(self, image, target=None):
+        if np.random.randint(2):
+            image = np.array(image,dtype='float64')
+            image[:, :, 0] += np.random.uniform(-self.delta, self.delta)
+            image[:, :, 0][image[:, :, 0] > 360.0] -= 360.0
+            image[:, :, 0][image[:, :, 0] < 0.0] += 360.0
+            image = np.uint8(image)
+            image = Image.fromarray(image)
+        return image, target
+
+class RandomContrast(object):
+    def __init__(self, lower=0.5, upper=1.5):
+        self.lower = lower
+        self.upper = upper
+        assert self.upper >= self.lower, "contrast upper must be >= lower."
+        assert self.lower >= 0, "contrast lower must be non-negative."
+
+    # expects float image
+    def __call__(self, image, target=None):
+        if np.random.randint(2):
+            image = np.array(image,dtype='float64')
+            alpha = np.random.uniform(self.lower, self.upper)
+            image *= alpha
+            image = np.uint8(image)
+            image = Image.fromarray(image)
+        return image, target
+
+class RandomBrightness(object):
+    def __init__(self, delta=32):
+        assert delta >= 0.0
+        assert delta <= 255.0
+        self.delta = delta
+
+    def __call__(self, image, target=None):
+        if np.random.randint(2):
+            image = np.array(image,dtype='float64')
+            delta = np.random.uniform(-self.delta, self.delta)
+            image += delta
+            image = np.uint8(image)
+            image = Image.fromarray(image)
+        return image, target
 
 class Normalize(object):
     def __init__(self, mean, std, to_bgr255=True):

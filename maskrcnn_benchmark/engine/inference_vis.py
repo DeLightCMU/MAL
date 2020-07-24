@@ -56,6 +56,8 @@ def compute_on_dataset(model, data_loader, device, output_folder):
         images = images.to(device)
         with torch.no_grad():
             output = model(images)
+            # for o in output:
+            #     print('o: ', o)
             output = [o.cpu().data.numpy() for o in output]
 
         for j in range(len(image_ids)):

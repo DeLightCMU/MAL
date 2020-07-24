@@ -5,9 +5,19 @@ import os
 
 
 class DatasetCatalog(object):
-    DATA_DIR = "/home/delight-gpu/Dataset/"
+    # DATA_DIR = "/data/weik/"
+    #DATA_DIR = "/data3/brad/data/VisDrone2019/"
+    #DATA_DIR = "/home/jimuyang/data/"
+    #DATA_DIR = "/home/jimuyang/Workspace3/AIDTR/nrec_drone-train/"
+    DATA_DIR = "/home/jimuyang/AIDTR/nrec_drone-train/"
+    #DATA_DIR = "/home/jimuyang/Workspace3/VisDrone2019+AIDTR_train/"
+    #DATA_DIR = "/home/jimuyang/data/VisDrone2019/"
 
     DATASETS = {
+        "visdrone_2019_train": (
+            "images",
+            "train.json"
+        ),
         "coco_test-dev": (
             "MSCOCO2017/images",
             "MSCOCO2017/annotations/image_info_test-dev2017.json",
@@ -61,7 +71,7 @@ class DatasetCatalog(object):
 
     @staticmethod
     def get(name):
-        if "coco" in name or "voc" in name:
+        if "coco" in name or "voc" in name or "visdrone" in name:
             data_dir = DatasetCatalog.DATA_DIR
             attrs = DatasetCatalog.DATASETS[name]
             args = dict(
