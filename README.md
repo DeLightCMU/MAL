@@ -64,7 +64,7 @@ git clone https://github.com/DeLightCMU/MAL.git
 # re-build it
 cd MAL
 bash build_maskrcnn.sh
-
+```
 
 ## 2. Running
 
