@@ -5,7 +5,7 @@ import cv2
 # 根路径，里面包含images(图片文件夹)，annos.txt(bbox标注)，classes.txt(类别标签),以及annotations文件夹(如果没有则会自动创建，用于保存最后的json)
 # root_path = '/data3/brad/data/VisDrone2019-DET/'
 #root_path = '/home/jimuyang/Workspace3/AIDTR/nrec_drone-val/'
-root_path = './annotations/'
+root_path = './'
 
 # 用于创建训练集或验证集
 phase = 'train'
