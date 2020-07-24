@@ -87,3 +87,11 @@ We provide the following MAL models pre-trained on COCO2017.
 cd MAL
 CUDA_VISIBLE_DEVICES=1,2,3,4 python -m torch.distributed.launch --nproc_per_node=4 tools/train_net.py --config-file ./configs/MAL_R-50-FPN_e2e.yaml SOLVER.IMS_PER_BATCH 4 MODEL.WEIGHT path_to_pretrained_model
 ```
+
+
+#### Generating COCO format labels
+
+```bash
+cd MAL/tools
+python transfer_to_coco_json_aidtr.py
+```
