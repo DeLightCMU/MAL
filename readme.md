@@ -14,7 +14,7 @@ This is the official implementation of the paper:
 }
 ```
 
-This repo includes the basic training and inference pipeline based on [maskrcnn_benckmark](https://github.com/facebookresearch/maskrcnn-benchmark) . 
+This repo includes the basic training pipeline based on [maskrcnn_benckmark](https://github.com/facebookresearch/maskrcnn-benchmark) . 
 
 For fast inference, please direct to [MAL-inference]( https://github.com/DeLightCMU/MAL-inference)
 
