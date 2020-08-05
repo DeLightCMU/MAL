@@ -71,7 +71,7 @@ bash build_maskrcnn.sh
 
 For that, all you need to do is to modify `maskrcnn_benchmark/config/paths_catalog.py` to point to the location where your dataset is stored.
 
-#### Pre-trained COCO models
+#### Downloading Pre-trained COCO models
 We provide the following MAL models pre-trained on COCO2017. 
 
 | Config File              | Backbone                | COCO pth models |
