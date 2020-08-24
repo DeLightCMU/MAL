@@ -74,11 +74,11 @@ For that, all you need to do is to modify `maskrcnn_benchmark/config/paths_catal
 #### Downloading Pre-trained COCO models
 We provide the following MAL models pre-trained on COCO2017. 
 
-| Config File              | Backbone                | COCO pth models |
-| :----------------------: | :---------------------: | :------------:  |
-| configs/mal_R-50-FPN     | ResNet-50-FPN           | [download](https://cmu.box.com/s/f70ewy7fh66bsb551v44hfskehgz07z3)   |
-| configs/mal_R-101-FPN    | ResNet-101-FPN          | download   |
-| configs/mal_X-101-FPN    | ResNext-101-FPN         | [download](https://cmu.box.com/s/5bgax4gqsyvv31w5uhwrywmvvikathnn)   |
+| Config File              | Backbone               | test-dev mAP (single-scale) | pth models |
+| :----------------------: | :---------------------:| :--------------: | :------------:  |
+| configs/mal_R-50-FPN     | ResNet-50-FPN          |39.2              | [download](https://cmu.box.com/s/f70ewy7fh66bsb551v44hfskehgz07z3)   |
+| configs/mal_R-101-FPN    | ResNet-101-FPN         |43.6              | download   |
+| configs/mal_X-101-FPN    | ResNext-101-FPN        |45.9              | [download](https://cmu.box.com/s/5bgax4gqsyvv31w5uhwrywmvvikathnn)   |
 
 
 #### Fine-tuning from COCO models
