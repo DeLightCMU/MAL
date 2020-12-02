@@ -55,7 +55,7 @@ conda install pytorch=1.1 torchvision=0.2.1 cudatoolkit=10.0 -c pytorch
 # install pycocotools
 pip install pycocotools
 
-# install FreeAnchor
+# install MAL
 git clone https://github.com/DeLightCMU/MAL.git
 git checkout finetune
 
