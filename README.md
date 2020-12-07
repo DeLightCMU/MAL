@@ -93,5 +93,5 @@ CUDA_VISIBLE_DEVICES=1,2,3,4 python -m torch.distributed.launch --nproc_per_node
 
 ```bash
 cd MAL/tools
-python transfer_to_coco_json_aidtr.py
+python transfer_to_coco_json_visdrone.py
 ```
