@@ -34,7 +34,7 @@ SOLVER:
   CHECKPOINT_PERIOD: 2500
 RETINANET:
   RETINANET_ON: True
-  NUM_CLASSES: 4 # for visdrone mod #4 is for aidtr #81 is for coco
+  NUM_CLASSES: 12
   PRIOR_PROB: 0.02
   SCALES_PER_OCTAVE: 3
   STRADDLE_THRESH: -1
@@ -45,6 +45,4 @@ FREEANCHOR:
   BBOX_REG_WEIGHT: 0.75
   FOCAL_LOSS_ALPHA: 0.5
   FOCAL_LOSS_GAMMA: 2.0
-  #OUTPUT_DIR: outputs/resnet50
-  #OUTPUT_DIR: outputs/resnet50-aidtr-train
-OUTPUT_DIR: outputs/resnet50-aidtrmore
+OUTPUT_DIR: outputs/resnet50
