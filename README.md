@@ -1,7 +1,10 @@
 # Multiple Anchor Learning (MAL)
 
 This is the official implementation of the paper: 
-- Wei Ke, Tianliang Zhang, Zeyi Huang, Qixiang Ye, Jianzhuang Liu, Dong Huang, Multiple Anchor Learning for Visual Object Detection. [PDF](https://openaccess.thecvf.com/content_CVPR_2020/papers/Ke_Multiple_Anchor_Learning_for_Visual_Object_Detection_CVPR_2020_paper.pdf), CVPR, 2020. 
+
+**Wei Ke, Tianliang Zhang, Zeyi Huang, Qixiang Ye, Jianzhuang Liu and Dong Huang**, ***Multiple Anchor Learning for Visual Object Detection***, **CVPR, 2020**, [PDF](https://openaccess.thecvf.com/content_CVPR_2020/papers/Ke_Multiple_Anchor_Learning_for_Visual_Object_Detection_CVPR_2020_paper.pdf)
+
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/multiple-anchor-learning-for-visual-object/object-detection-on-coco)](https://paperswithcode.com/sota/object-detection-on-coco?p=multiple-anchor-learning-for-visual-object)
 
 ### Citation: 
 
@@ -16,8 +19,8 @@ This is the official implementation of the paper:
 
 This repo includes the basic training and inference pipeline based on [maskrcnn_benckmark](https://github.com/facebookresearch/maskrcnn-benchmark) . 
 
-For fast inference, please direct to [MAL-inference]( https://github.com/DeLightCMU/MAL-inference)
-
+For MAL fast inference, please direct to [MAL-inference]( https://github.com/DeLightCMU/MAL-inference)
+For MAL detection&tracking extention, please direct to [MAL-inference-deepsort]( https://github.com/abhinavagarwalla/MAL-inference-deepsort)
 
 ## 1. Installation
 
