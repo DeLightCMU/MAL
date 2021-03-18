@@ -19,8 +19,9 @@ This is the official implementation of the paper:
 
 This repo includes the basic training and inference pipeline based on [maskrcnn_benckmark](https://github.com/facebookresearch/maskrcnn-benchmark) . 
 
-For MAL fast inference, please direct to [MAL-inference]( https://github.com/DeLightCMU/MAL-inference)
-For MAL detection&tracking extention, please direct to [MAL-inference-deepsort]( https://github.com/abhinavagarwalla/MAL-inference-deepsort)
+For MAL fast inference, please direct to [MAL-inference]( https://github.com/DeLightCMU/MAL-inference).
+
+For MAL detection&tracking extention, please direct to [MAL-inference-deepsort]( https://github.com/abhinavagarwalla/MAL-inference-deepsort).
 
 ## 1. Installation
 
